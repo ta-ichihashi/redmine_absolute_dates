@@ -8,7 +8,7 @@ module AbsoluteDateHelperPatch
     def time_tag(time)
       zone = User.current.time_zone
       local = zone ? time.in_time_zone(zone) : (time.utc? ? time.localtime : time)
-      text = format_date(local)
+      text = format_time(local)
       tip_text = format_time(time)
       if @project
         link_to(text, {:controller => 'activities', :action => 'index', :id => @project, :from => local.to_date}, :title => tip_text).html_safe
